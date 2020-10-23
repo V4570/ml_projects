@@ -25,8 +25,8 @@ def main():
 	print("R^2: %.2f" % metrics.r2_score(y_test, y_predicted))
 
 	plt.figure(1, figsize=(6, 5))
-	plt.plot(x, slope*x + intercept, 'r', label='y={:.2f}x+{:.2f}'.format(slope[0], intercept))
-	plt.scatter(x, y, color='k', s=6)
+	plt.plot(x, slope*x + intercept, '#c95a49', label='y={:.2f}x+{:.2f}'.format(slope[0], intercept))
+	plt.scatter(x, y, color='#3065ac', s=6)
 	plt.legend(fontsize=9)
 
 	plt.show()
