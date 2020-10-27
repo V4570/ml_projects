@@ -22,9 +22,9 @@ def main():
 
 	x_train, x_test, y_train, y_test = model_selection.train_test_split(x, y, test_size=0.25, random_state=0)
 
-	regressor = linear_regression_model.fit(x_train, y_train)
-	slope = regressor.coef_
-	intercept = regressor.intercept_
+	lr = linear_regression_model.fit(x_train, y_train)
+	slope = lr.coef_
+	intercept = lr.intercept_
 
 	y_predicted = linear_regression_model.predict(x_test)
 
