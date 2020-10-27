@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 """
-AI101 Machine Learning Project 1
-Linear Regression
+AI101 Machine Learning
+Project 1 - Linear Regression
 """
 
 __author__ = "Vasileios Tosounidis"
