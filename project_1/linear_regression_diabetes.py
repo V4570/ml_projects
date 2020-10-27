@@ -1,4 +1,12 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+
+"""
+AI101 Machine Learning Project 1
+Linear Regression
+"""
+
+__author__ = "Vasileios Tosounidis"
+__email__ = "vtosounid@csd.auth.gr"
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -30,7 +38,6 @@ def main():
 	plt.legend(fontsize=9)
 
 	plt.show()
-
 
 
 if __name__ == '__main__':
