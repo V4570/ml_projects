@@ -9,12 +9,13 @@ __author__ = "Vasileios Tosounidis"
 __email__ = "vtosounid@csd.auth.gr"
 
 from sklearn import datasets, metrics, model_selection, tree
+import graphviz
 
 
 def main():
 	breast_cancer_data = datasets.load_breast_cancer()
 
-	num_of_features = 1
+	num_of_features = 5
 
 	x = breast_cancer_data.data[:, :num_of_features]
 	y = breast_cancer_data.target
@@ -25,7 +26,7 @@ def main():
 
 	print('Criterion,Max Depth,Accuracy,Precision,Recall,F1')
 	for c in criterion:
-		for md in range(max_depth, 2004, 100):
+		for md in range(max_depth, 15):
 			model = tree.DecisionTreeClassifier(criterion=c, max_depth=md)
 
 			model.fit(x_train, y_train)
@@ -39,7 +40,13 @@ def main():
 
 			print('{},{},{:.2f},{:.2f},{:.2f},{:.2f}'.format(c, md, accuracy, precision, recall, f1))
 
-	pass
+			if md == 4:
+				feature_names = breast_cancer_data.feature_names[:num_of_features]
+				class_names = breast_cancer_data.target_names
+				dot_data = tree.export_graphviz(model, feature_names=feature_names, class_names=class_names)
+
+				graph = graphviz.Source(dot_data)
+				graph.render("breastCancerTreePlot_" + c)
 
 
 if __name__ == '__main__':
