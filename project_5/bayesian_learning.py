@@ -18,8 +18,12 @@ import pandas as pd
 
 
 def main():
-    train_news_dataset = fetch_20newsgroups(subset='train', shuffle=False, random_state=0)
-    test_news_dataset = fetch_20newsgroups(subset='test', shuffle=False, random_state=0)
+    train_news_dataset = fetch_20newsgroups(subset='train',
+                                            remove=('headers', 'footers', 'quotes'),
+                                            shuffle=False, random_state=0)
+    test_news_dataset = fetch_20newsgroups(subset='test',
+                                           remove=('headers', 'footers', 'quotes'),
+                                           shuffle=False, random_state=0)
     vectorizer = CountVectorizer()
 
     x_train = vectorizer.fit_transform(train_news_dataset.data)
