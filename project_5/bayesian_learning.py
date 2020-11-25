@@ -35,10 +35,10 @@ def main():
     acc = 0.0
     recall = 0.0
     precision = 0.0
-    f1 = 1.0
-    a = 0.1
+    f1 = 0.0
+    a = 2.0
     y_predicted = None
-    while f1 >= 0.7:
+    while f1 < 0.7 and a > 0.1:
         classifier = MultinomialNB(alpha=a)
         classifier.fit(x_train, y_train)
 
@@ -47,9 +47,9 @@ def main():
         recall = recall_score(y_test, y_predicted, average='macro')
         precision = precision_score(y_test, y_predicted, average='macro')
         f1 = f1_score(y_test, y_predicted, average='macro')
-        a += 0.05
+        a -= 0.05
 
-    a -= 0.05
+    a += 0.05
     cf_matrix = confusion_matrix(y_test, y_predicted)
     print('------Scores------')
     print("\tAccuracy: {:.3f}".format(acc))
